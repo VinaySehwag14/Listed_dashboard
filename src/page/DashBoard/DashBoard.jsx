@@ -1,6 +1,5 @@
 import React from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
-import "./dashboard.css";
 import Topbar from "../../components/topbar/Topbar";
 import FeaturedInfo from "../../components/widgetOne/FeaturedInfo";
 import Chart from "../../components/chart/Chart";
