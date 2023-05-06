@@ -5,7 +5,7 @@ import FeaturedInfo from "../../components/widgetOne/FeaturedInfo";
 import Chart from "../../components/chart/Chart";
 import CircleChart from "../../components/pieChart/CircleChart";
 import Schedule from "../../components/schedule/Schedule";
-import "./dashboard.css";
+import "./dashbaord.css";
 
 const DashBoard = () => {
   return (
