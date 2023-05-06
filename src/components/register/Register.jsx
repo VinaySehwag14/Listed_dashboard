@@ -1,30 +1,32 @@
 import React from "react";
-import "./SignIn.css";
-import { useEffect, useState } from "react";
+import "./register.css";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   auth,
+  createUserWithEmailAndPassword,
   provider,
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "../../firebase";
 
-function SignIn() {
+function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const handleSignIn = async (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
+
     try {
-      const userCredential = await signInWithEmailAndPassword(
+      const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
-      //   console.log("User logged in:", userCredential.user);
-      navigate("/dashboard");
+      //   console.log("User signed up:", userCredential.user);
+      navigate("/");
     } catch (error) {
       console.error(error);
     }
@@ -39,6 +41,7 @@ function SignIn() {
       console.error(error);
     }
   };
+
   return (
     <div className="container">
       <div className="board">
@@ -47,8 +50,8 @@ function SignIn() {
       <div className="form">
         <div className="form_whole_cotainer">
           <section>
-            <h2>Sign In</h2>
-            <span>Sign in to your account</span>
+            <h2>Register</h2>
+            <span>Register your account</span>
           </section>
           <section className="auth_methods">
             <button className="diff_auth" onClick={handleGoogleLogin}>
@@ -72,7 +75,7 @@ function SignIn() {
               </div>
             </button>
           </section>
-          <form className="form_container" onSubmit={handleSignIn}>
+          <form className="form_container" onSubmit={handleSignup}>
             <div className="form-field">
               <label htmlFor="email">Email address</label>
               <input
@@ -98,12 +101,12 @@ function SignIn() {
               </a>
             </div>
 
-            <button type="submit" onSubmit={handleSignIn}>
-              Sign In
+            <button type="submit" onSubmit={handleSignup}>
+              Register
             </button>
           </form>
           <section className="register_link">
-            <Link to="/signup">Don’t have an account? Register here</Link>
+            <Link to="/signIn">Already have an account</Link>
           </section>
         </div>
       </div>
@@ -111,4 +114,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default Register;
